@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La fiche technique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500;600&display=swap">
+<style>
+/* ── RESET & BASE ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* Fiche d'exercices en thème clair : blocs = séances, cartes dépliables, corrections masquables */
+:root {
+  --bg:        #f4f6f9;
+  --surface:   #ffffff;
+  --card:      #ffffff;
+  --border:    #dfe3ea;
+  --border-hi: #b9c0ce;
+  --text:      #1d2230;
+  --text-dim:  #5c6476;
+  --accent:    #b97d00;
+  --accent-bg: #fff6df;
+  --green:     #1b8047;
+  --green-bg:  #ecf7f0;
+  --green-bd:  #c9e6d4;
+  --green-dk:  #12552f;
+  --red:       #c23b3b;
+  --blue:      #2d69ad;
+  --blue-bg:   #edf3fb;
+  --purple:    #6f45ad;
+  --font-head: 'Syne', 'Trebuchet MS', sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --radius:    10px;
+  color-scheme: light;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+/* ── HEADER ──────────────────────────────────────────────── */
+.site-header {
+  background: linear-gradient(135deg, #ffffff 0%, #eef2f8 100%);
+  border-bottom: 1px solid var(--border);
+  padding: 44px 20px 32px;
+  text-align: center;
+}
+.site-header .kicker {
+  display: inline-block;
+  background: var(--accent);
+  color: #ffffff;
+  font-family: var(--font-head);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding: 3px 12px;
+  border-radius: 3px;
+  margin-bottom: 18px;
+}
+.site-header h1 {
+  font-family: var(--font-head);
+  font-size: clamp(24px, 6vw, 38px);
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 8px;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+.site-header .sub {
+  color: var(--text-dim);
+  font-size: 14px;
+  font-weight: 400;
+  max-width: 540px;
+  margin: 0 auto 20px;
+}
+.legende {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin: 0 auto 22px;
+  font-size: 12.5px;
+  color: var(--text-dim);
+}
+
+/* ── NAV ANCRES ──────────────────────────────────────────── */
+.nav-anchors {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.nav-anchors a {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 7px 14px;
+  text-decoration: none;
+  transition: border-color .15s, color .15s;
+}
+.nav-anchors a:hover, .nav-anchors a:focus-visible { border-color: var(--accent); color: var(--accent); }
+
+/* ── CONTENEUR PRINCIPAL ─────────────────────────────────── */
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 36px 18px 80px;
+}
+
+/* ── TITRE DE BLOC ───────────────────────────────────────── */
+.bloc-titre {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 52px 0 6px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+.bloc-titre:first-child { margin-top: 0; }
+.bloc-titre .icone { font-size: 26px; flex-shrink: 0; }
+.bloc-titre h2 {
+  font-family: var(--font-head);
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.3;
+  text-wrap: balance;
+}
+.bloc-titre h2 small {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 1px;
+}
+
+/* ── MÉMO ────────────────────────────────────────────────── */
+.memo {
+  background: var(--green-bg);
+  border: 1px solid var(--green-bd);
+  border-left: 4px solid var(--green);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  margin: 16px 0 24px;
+  font-size: 14px;
+  line-height: 1.75;
+}
+.memo .memo-titre {
+  font-family: var(--font-head);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 8px;
+}
+.memo code {
+  display: block;
+  background: #ffffff;
+  border: 1px solid var(--green-bd);
+  border-radius: 5px;
+  padding: 8px 12px;
+  color: var(--green-dk);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 13.5px;
+  margin: 5px 0;
+}
+.memo .note { color: var(--text-dim); font-size: 13px; margin-top: 8px; }
+
+/* ── CARTE EXERCICE ──────────────────────────────────────── */
+.exo-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 14px;
+  overflow: hidden;
+  transition: border-color .15s;
+}
+.exo-card:hover { border-color: var(--border-hi); }
+
+.exo-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  padding: 14px 16px;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+}
+.exo-header::-webkit-details-marker { display: none; }
+.exo-header:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+.exo-num {
+  font-family: var(--font-head);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-dim);
+  flex-shrink: 0;
+  min-width: 40px;
+}
+.badge {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 2px 9px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+.badge-1 { background: #e9f6ee; color: var(--green); border: 1px solid #bfe2cc; }
+.badge-2 { background: var(--accent-bg); color: #8a5d00; border: 1px solid #efd798; }
+.badge-3 { background: #fbeaea; color: var(--red); border: 1px solid #efc4c4; }
+.badge-exam { background: #f2ecfa; color: var(--purple); border: 1px solid #d9c9ef; }
+
+.exo-titre-txt {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  flex: 1 1 200px;
+  min-width: 0;
+}
+.chevron { color: var(--text-dim); font-size: 13px; flex-shrink: 0; transition: transform .2s; }
+details[open] .chevron { transform: rotate(180deg); }
+
+/* ── CORPS DE L'EXERCICE ─────────────────────────────────── */
+.exo-body { padding: 0 16px 20px; border-top: 1px solid var(--border); }
+
+.contexte {
+  background: var(--blue-bg);
+  border-left: 3px solid var(--blue);
+  border-radius: 0 6px 6px 0;
+  padding: 14px 16px;
+  margin: 16px 0;
+  font-size: 14px;
+  line-height: 1.75;
+}
+.contexte strong { color: var(--text); }
+
+.table-wrap { overflow-x: auto; margin: 12px 0; }
+.tableau-donnees {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  background: var(--surface);
+}
+.tableau-donnees th {
+  background: #eef1f6;
+  color: var(--text-dim);
+  font-family: var(--font-head);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 8px 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+.tableau-donnees td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  vertical-align: top;
+}
+.tableau-donnees tr:last-child td { border-bottom: none; }
+.tableau-donnees td.num { font-weight: 700; color: var(--text); white-space: nowrap; }
+
+.questions { margin: 18px 0 0; }
+.question { display: flex; gap: 10px; margin-bottom: 10px; align-items: flex-start; }
+.question .q-num {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  background: var(--accent);
+  color: #ffffff;
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 11px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+.question p { font-size: 14px; margin: 0; min-width: 0; }
+
+/* ── COUP DE POUCE ───────────────────────────────────────── */
+.ordre-grandeur {
+  background: var(--accent-bg);
+  border: 1px solid #efd798;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #6e4b00;
+  margin: 12px 0 0;
+}
+.ordre-grandeur::before { content: "💡 "; }
+
+/* ── BOUTON CORRECTION ───────────────────────────────────── */
+.btn-corrige {
+  background: var(--surface);
+  border: 1px solid var(--border-hi);
+  border-radius: 6px;
+  color: var(--text-dim);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 9px 16px;
+  margin-top: 18px;
+  transition: all .15s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn-corrige:hover, .btn-corrige:focus-visible { border-color: var(--green); color: var(--green); }
+
+/* ── CORRECTION ──────────────────────────────────────────── */
+.correction {
+  display: none;
+  background: var(--green-bg);
+  border: 1px solid var(--green-bd);
+  border-radius: 6px;
+  padding: 16px;
+  margin-top: 14px;
+  font-size: 14px;
+  line-height: 1.8;
+}
+.correction.visible { display: block; }
+.correction .corr-etape {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--green-bd);
+}
+.correction .corr-etape:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+.correction .c-num {
+  display: inline-block;
+  background: var(--green);
+  color: #ffffff;
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 10px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 18px;
+  margin-right: 6px;
+}
+.correction code {
+  display: block;
+  background: #ffffff;
+  border: 1px solid var(--green-bd);
+  border-radius: 4px;
+  padding: 6px 12px;
+  color: var(--green-dk);
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  margin: 5px 0;
+}
+.correction .res { font-family: var(--font-head); font-weight: 700; color: var(--text); }
+.correction .conclu { margin-top: 8px; font-size: 13.5px; color: #2c6244; font-style: italic; }
+.correction .tableau-corr { width: 100%; border-collapse: collapse; font-size: 13px; margin: 8px 0; background: #ffffff; }
+.correction .tableau-corr th {
+  background: #dff0e6;
+  color: var(--green-dk);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 6px 10px;
+  text-align: left;
+}
+.correction .tableau-corr td { padding: 6px 10px; border-bottom: 1px solid var(--green-bd); color: #24402f; vertical-align: top; }
+.correction .tableau-corr td.val { font-weight: 700; color: var(--green); }
+
+/* ── SÉPARATEUR ──────────────────────────────────────────── */
+hr.section-sep { border: none; border-top: 1px solid var(--border); margin: 54px 0 0; }
+
+/* ── FOOTER ──────────────────────────────────────────────── */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 28px 20px;
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 12px;
+  background: var(--surface);
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────────── */
+@media (max-width: 520px) {
+  .exo-titre-txt { font-size: 13.5px; }
+  .contexte { font-size: 13.5px; }
+  .tableau-donnees { font-size: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+</style>
+</head>
+<body>
+<!-- ══ HEADER ══════════════════════════════════════════════ -->
+<header class="site-header">
+  <div class="kicker">🧁 Gestion appliquée – CAP pâtissier</div>
+  <h1>La fiche<br>technique</h1>
+  <p class="sub">Chapitre 8. 18 exercices en 5 séances, avec la pâtisserie-boulangerie Chez Margot. Ouvre un exercice, réponds sur ton cahier ou dans ton manuel, puis vérifie avec la correction.</p>
+  <div class="legende">
+    <span class="badge badge-1">⬆ décollage</span> je découvre
+    <span class="badge badge-2">◆ intermédiaire</span> j'applique
+    <span class="badge badge-exam">★ examen</span> je m'entraîne
+  </div>
+  <nav class="nav-anchors">
+    <a href="#elements">1 · Les éléments de la fiche</a>
+    <a href="#unites">2 · Unités et pesées</a>
+    <a href="#prix">3 · Le prix total HT</a>
+    <a href="#cout">4 · Le coût matière</a>
+    <a href="#examen">5 · Sujets type examen</a>
+  </nav>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════════════
+     BLOC 1 – LES ÉLÉMENTS DE LA FICHE TECHNIQUE (séance 1)
+══════════════════════════════════════════════════════════ -->
+<div class="bloc-titre" id="elements">
+  <span class="icone">📋</span>
+  <h2><small>Séance 1 · 1 h</small>Bloc 1 – À quoi sert une fiche technique ?</h2>
+</div>
+
+<div class="memo">
+  <div class="memo-titre">🗂 mémo</div>
+  <code>Fiche technique = document qui rassemble toutes les informations pour réaliser une recette.</code>
+  <code>Les 6 éléments : a) le nom de la recette · b) les ingrédients (nom, unité, quantité) · c) le nombre de portions (rendement) · d) le coût matière · e) le matériel nécessaire · f) la progression (les étapes).</code>
+  <code>Intérêts : conserver et transmettre les informations au personnel · calculer le coût matière, puis le prix de vente · contrôler les stocks · éviter le gaspillage et les pertes.</code>
+  <p class="note">Source : encadré « bon à savoir », document 1 et page 57 du manuel.</p>
+</div>
+
+<!-- EX 1 -->
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 1</span>
+    <span class="badge badge-1">⬆ décollage</span>
+    <span class="exo-titre-txt">Replace les lettres sur la fiche du pain de tradition</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">
+      <strong>Chez Margot</strong> est une pâtisserie-boulangerie. Le premier jour, Margot donne à Lucas, son apprenti, la fiche technique du « pain de tradition française ». Elle lui demande de retrouver chaque partie de la fiche. C'est l'<strong>exercice 1 du manuel</strong> (pages 55 et 56).
+    </div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Lis le document 1 du manuel.</p></div>
+      <div class="question"><span class="q-num">2</span><p>Écris dans ton manuel la bonne lettre (a à f) dans chaque case de la fiche.</p></div>
+    </div>
+    <div class="ordre-grandeur"><strong>Coup de pouce :</strong> suis chaque flèche. Regarde ce qu'elle montre : un titre, une liste, un nombre de pièces, un calcul, des outils ou des étapes.</div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape">
+        <table class="tableau-corr">
+          <tr><th>Flèche vers…</th><th>Lettre</th></tr>
+          <tr><td>« Pain de tradition française »</td><td class="val">a – nom de la recette</td></tr>
+          <tr><td>Farine de tradition – 1 000 g</td><td class="val">b – ingrédients</td></tr>
+          <tr><td>Réalisations de… / rendement</td><td class="val">c – nombre de portions</td></tr>
+          <tr><td>Coût matière</td><td class="val">d – calcul du coût matière</td></tr>
+          <tr><td>Matériel nécessaire</td><td class="val">e – liste du matériel</td></tr>
+          <tr><td>Détaillage, mise en forme…</td><td class="val">f – progression</td></tr>
+        </table>
+        <p class="conclu">La case c a deux flèches : les réalisations et le rendement disent tous les deux combien de pièces on obtient.</p>
+      </div>
+    </div>
+  </div>
+</details>
+
+<!-- EX 2 -->
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 2</span>
+    <span class="badge badge-1">⬆ décollage</span>
+    <span class="exo-titre-txt">Pourquoi Margot a besoin de fiches techniques</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">
+      Voici 4 situations vécues <strong>Chez Margot</strong>. Chaque situation correspond à un intérêt de la fiche technique (page 57 du manuel).
+    </div>
+    <div class="table-wrap">
+      <table class="tableau-donnees">
+        <tr><th>Situation</th><th>Ce qui se passe</th></tr>
+        <tr><td class="num">A</td><td>Un nouvel apprenti remplace Lucas au labo. Il réalise les sablés sans aide.</td></tr>
+        <tr><td class="num">B</td><td>Margot veut savoir combien lui coûtent les ingrédients d'un cake, pour fixer son prix.</td></tr>
+        <tr><td class="num">C</td><td>Lucas sait combien de beurre il faut pour la semaine et vérifie la réserve.</td></tr>
+        <tr><td class="num">D</td><td>Avant, Lucas mettait « un peu trop » de sucre. Maintenant il pèse juste.</td></tr>
+      </table>
+    </div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Associe chaque situation (A, B, C, D) à un intérêt de la fiche technique.</p></div>
+    </div>
+    <div class="ordre-grandeur"><strong>Coup de pouce :</strong> les 4 intérêts sont dans le mémo. Chaque intérêt sert une seule fois.</div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape">
+        <table class="tableau-corr">
+          <tr><th>Situation</th><th>Intérêt</th></tr>
+          <tr><td>A</td><td class="val">Conserver et transmettre les informations au personnel</td></tr>
+          <tr><td>B</td><td class="val">Calculer le coût matière, puis le prix de vente</td></tr>
+          <tr><td>C</td><td class="val">Contrôler les stocks</td></tr>
+          <tr><td>D</td><td class="val">Éviter le gaspillage et les pertes d'ingrédients</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</details>
+
+<!-- EX 3 -->
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 3</span>
+    <span class="badge badge-2">◆ intermédiaire</span>
+    <span class="exo-titre-txt">Fiche technique ou carnet de recettes ?</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">
+      Pour l'examen, Lucas prépare son <strong>carnet de recettes personnel</strong>. Le règlement du CAP pâtissier est strict : le carnet contient <strong>uniquement les ingrédients et les quantités</strong>. La méthode est interdite. Le carnet est sur papier.
+    </div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Lucas veut recopier la fiche du pain de tradition dans son carnet. Liste ce qu'il a le droit de garder.</p></div>
+      <div class="question"><span class="q-num">2</span><p>Vrai ou faux : « je peux écrire " pétrir 8 min en vitesse 1 " dans mon carnet ».</p></div>
+      <div class="question"><span class="q-num">3</span><p>Vrai ou faux : « je peux montrer mon carnet sur mon téléphone le jour de l'examen ».</p></div>
+    </div>
+    <div class="ordre-grandeur"><strong>Coup de pouce :</strong> carnet = « quoi » et « combien ». Fiche technique = tout, y compris « comment ».</div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape">
+        <span class="c-num">1</span> Lucas garde :
+        <code>Pain de tradition française : farine de tradition 1 000 g · sel 18 g · eau 650 g · levure fraîche 20 g</code>
+      </div>
+      <div class="corr-etape"><span class="c-num">2</span> <span class="res">Faux.</span> C'est une étape de fabrication (la méthode). Elle est interdite dans le carnet.</div>
+      <div class="corr-etape"><span class="c-num">3</span> <span class="res">Faux.</span> Le carnet numérique est refusé. Une impression papier est acceptée.
+        <p class="conclu">Un carnet non conforme est refusé le jour de l'épreuve.</p>
+      </div>
+    </div>
+  </div>
+</details>
+
+<!-- EX 4 -->
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 4</span>
+    <span class="badge badge-exam">★ examen</span>
+    <span class="exo-titre-txt">La fiche des sablés est incomplète</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">
+      Lucas a écrit sa première fiche technique. Margot la trouve incomplète.
+    </div>
+    <div class="table-wrap">
+      <table class="tableau-donnees">
+        <tr><th colspan="2">Sablés nature</th></tr>
+        <tr><td>Ingrédients</td><td>Farine 250 g · beurre 150 g · sucre glace 100 g · œufs 50 g</td></tr>
+        <tr><td>Progression</td><td>Sabler · ajouter les œufs · fraser · réserver au froid · abaisser · détailler · cuire 12 min à 170 °C</td></tr>
+      </table>
+    </div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Retrouve les 3 éléments présents (donne leur lettre).</p></div>
+      <div class="question"><span class="q-num">2</span><p>Trouve les 3 éléments qui manquent (donne leur lettre et leur nom).</p></div>
+      <div class="question"><span class="q-num">3</span><p>Explique pourquoi Margot ne peut pas fixer le prix des sablés avec cette fiche.</p></div>
+    </div>
+    <div class="ordre-grandeur"><strong>Coup de pouce :</strong> compare avec les 6 éléments du document 1. Le titre compte aussi.</div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape"><span class="c-num">1</span> Présents : <span class="res">a – le nom (sablés nature) · b – les ingrédients · f – la progression</span>.</div>
+      <div class="corr-etape"><span class="c-num">2</span> Manquent :
+        <code>c – le nombre de portions · d – le coût matière · e – le matériel nécessaire</code>
+        Il manque aussi les prix unitaires des ingrédients.
+      </div>
+      <div class="corr-etape"><span class="c-num">3</span> Il n'y a ni prix unitaire, ni coût matière, ni rendement.
+        <p class="conclu">Sans coût matière et sans nombre de sablés, impossible de calculer le prix d'un sablé.</p>
+      </div>
+    </div>
+  </div>
+</details>
+
+<hr class="section-sep">
+
+<!-- ══════════════════════════════════════════════════════════
+     BLOC 2 – UNITÉS ET PESÉES (séance 2)
+══════════════════════════════════════════════════════════ -->
+<div class="bloc-titre" id="unites" style="margin-top:40px">
+  <span class="icone">⚖️</span>
+  <h2><small>Séance 2 · 1 h</small>Bloc 2 – Lire les quantités et convertir</h2>
+</div>
+
+<div class="memo">
+  <div class="memo-titre">🗂 mémo</div>
+  <code>1 kg = 1 000 g → pour passer des grammes aux kilogrammes, je divise par 1 000.</code>
+  <code>Exemples : 18 g = 0,018 kg · 250 g = 0,250 kg · 1 500 g = 1,5 kg</code>
+  <code>1 L = 100 cl = 1 000 ml. Pour l'eau : 1 L d'eau pèse 1 kg, donc 650 g d'eau = 0,65 L.</code>
+  <code>Prix unitaire HT : en €/kg, en €/L ou en €/pièce. La quantité doit être dans la même unité que le prix.</code>
+  <p class="note">Source : exercices 2, 3 et 5 du manuel (pages 57 et 58).</p>
+</div>
+
+<!-- EX 5 -->
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 5</span>
+    <span class="badge badge-1">⬆ décollage</span>
+    <span class="exo-titre-txt">La farine du pain de tradition</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">
+      Lucas lit la fiche du pain de tradition (page 57). Ce sont les <strong>exercices 2 et 3 du manuel</strong>.
+    </div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Écris la quantité de farine de tradition, en kilogramme.</p></div>
+      <div class="question"><span class="q-num">2</span><p>Écris le prix unitaire HT du kilogramme de farine de tradition.</p></div>
+    </div>
+    <div class="ordre-grandeur"><strong>Coup de pouce :</strong> 1 000 g, c'est un nombre rond. Le prix est dans la colonne « prix unitaire HT ».</div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape"><span class="c-num">1</span> <code>1 000 g = 1 kg</code></div>
+      <div class="corr-etape"><span class="c-num">2</span> <span class="res">0,73 € le kg.</span></div>
+    </div>
+  </div>
+</details>
+
+<!-- EX 6 -->
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 6</span>
+    <span class="badge badge-1">⬆ décollage</span>
+    <span class="exo-titre-txt">Convertis en kilogramme</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">
+      Question 1 : c'est l'<strong>exercice 5 du manuel</strong>. Question 2 : Lucas prépare la pesée d'une pâte sablée et d'une crème d'amandes.
+    </div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Convertis en kg : sel 18 g · levure fraîche 20 g.</p></div>
+      <div class="question"><span class="q-num">2</span><p>Convertis en kg : farine 250 g · beurre 125 g · sucre glace 80 g · poudre d'amandes 1 500 g.</p></div>
+    </div>
+    <div class="ordre-grandeur"><strong>Coup de pouce :</strong> diviser par 1 000, c'est décaler la virgule de 3 rangs vers la gauche. Ajoute des 0 si besoin.</div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape"><span class="c-num">1</span>
+        <code>Sel : 18 g = 0,018 kg · levure fraîche : 20 g = 0,020 kg</code>
+        Attention : le corrigé du manuel indique 15 g de levure. Ton manuel élève indique 20 g. On garde 20 g.
+      </div>
+      <div class="corr-etape"><span class="c-num">2</span>
+        <code>250 g = 0,250 kg · 125 g = 0,125 kg · 80 g = 0,080 kg · 1 500 g = 1,5 kg</code>
+      </div>
+    </div>
+  </div>
+</details>
+
+<!-- EX 7 -->
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 7</span>
+    <span class="badge badge-2">◆ intermédiaire</span>
+    <span class="exo-titre-txt">Le bon prix dans la bonne unité</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">
+      Sur la fiche du pain de tradition, l'eau est pesée en grammes (650 g), mais son prix est en euros par litre (0,13 €/L).
+    </div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Convertis 650 g d'eau en litre.</p></div>
+      <div class="question"><span class="q-num">2</span><p>Convertis 75 cl de crème liquide en litre.</p></div>
+      <div class="question"><span class="q-num">3</span><p>Lucas multiplie 650 × 0,13. Explique son erreur.</p></div>
+    </div>
+    <div class="ordre-grandeur"><strong>Coup de pouce :</strong> pour l'eau, 1 kg = 1 L. Pour les centilitres, 100 cl = 1 L.</div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape"><span class="c-num">1</span> <code>650 g = 0,650 kg = 0,65 L</code></div>
+      <div class="corr-etape"><span class="c-num">2</span> <code>75 cl = 75 ÷ 100 = 0,75 L</code></div>
+      <div class="corr-etape"><span class="c-num">3</span> Il a gardé les grammes alors que le prix est par litre. Il trouve 84,50 € au lieu de 0,08 €.
+        <p class="conclu">Toujours convertir la quantité dans l'unité du prix avant de multiplier.</p>
+      </div>
+    </div>
+  </div>
+</details>
+
+<!-- EX 8 -->
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 8</span>
+    <span class="badge badge-exam">★ examen</span>
+    <span class="exo-titre-txt">Trois tartes au lieu d'une</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">
+      Pour samedi, Margot veut <strong>3 tartes</strong>. La fiche de la pâte sablée est faite pour <strong>1 tarte</strong>. Lucas doit adapter les quantités.
+    </div>
+    <div class="table-wrap">
+      <table class="tableau-donnees">
+        <tr><th>Pâte sablée</th><th>Pour 1 tarte</th><th>Pour 3 tartes</th></tr>
+        <tr><td>Farine</td><td class="num">200 g</td><td>…</td></tr>
+        <tr><td>Beurre</td><td class="num">100 g</td><td>…</td></tr>
+        <tr><td>Sucre glace</td><td class="num">80 g</td><td>…</td></tr>
+        <tr><td>Œufs</td><td class="num">40 g</td><td>…</td></tr>
+      </table>
+    </div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Calcule les quantités pour 3 tartes.</p></div>
+      <div class="question"><span class="q-num">2</span><p>Calcule le poids total de pâte pour 3 tartes, en g puis en kg.</p></div>
+      <div class="question"><span class="q-num">3</span><p>Choisis la balance : précise au gramme (portée 5 kg) ou au 5 g près (portée 30 kg) ? Justifie.</p></div>
+    </div>
+    <div class="ordre-grandeur"><strong>Coup de pouce :</strong> chaque quantité est multipliée par 3. Le total doit aussi être multiplié par 3.</div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape"><span class="c-num">1</span>
+        <table class="tableau-corr">
+          <tr><th>Ingrédient</th><th>Calcul</th><th>3 tartes</th></tr>
+          <tr><td>Farine</td><td>200 × 3</td><td class="val">600 g</td></tr>
+          <tr><td>Beurre</td><td>100 × 3</td><td class="val">300 g</td></tr>
+          <tr><td>Sucre glace</td><td>80 × 3</td><td class="val">240 g</td></tr>
+          <tr><td>Œufs</td><td>40 × 3</td><td class="val">120 g</td></tr>
+        </table>
+      </div>
+      <div class="corr-etape"><span class="c-num">2</span> <code>600 + 300 + 240 + 120 = 1 260 g = 1,26 kg</code></div>
+      <div class="corr-etape"><span class="c-num">3</span> <span class="res">La balance précise au gramme.</span> Les pesées sont petites (120 g) et le total ne dépasse pas 5 kg.
+        <p class="conclu">On choisit la balance selon sa précision et sa portée.</p>
+      </div>
+    </div>
+  </div>
+</details>
+
+<hr class="section-sep">
+
+<!-- ══════════════════════════════════════════════════════════
+     BLOC 3 – LE PRIX TOTAL HT (séance 3)
+══════════════════════════════════════════════════════════ -->
+<div class="bloc-titre" id="prix" style="margin-top:40px">
+  <span class="icone">🧮</span>
+  <h2><small>Séance 3 · 1 h</small>Bloc 3 – Calculer le prix total HT</h2>
+</div>
+
+<div class="memo">
+  <div class="memo-titre">🗂 mémo</div>
+  <code>Prix total HT = quantité × prix unitaire HT</code>
+  <code>Coût matière = somme de tous les prix totaux HT de la recette.</code>
+  <code>Coût matière d'une pièce = coût matière ÷ nombre de pièces (rendement).</code>
+  <p class="note">Source : document 2 et exercices 4, 6, 7, 8 et 9 du manuel (pages 57 et 58). On arrondit chaque prix total au centime.</p>
+</div>
+
+<!-- EX 9 -->
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 9</span>
+    <span class="badge badge-1">⬆ décollage</span>
+    <span class="exo-titre-txt">Le prix de la farine</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">
+      C'est l'<strong>exercice 4 du manuel</strong>. Lucas utilise 1 kg de farine de tradition à 0,73 €/kg.
+    </div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Calcule le prix total HT de la farine.</p></div>
+    </div>
+    <div class="ordre-grandeur"><strong>Coup de pouce :</strong> applique la formule du document 2.</div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape"><span class="c-num">1</span> <code>1 × 0,73 = 0,73 €</code></div>
+    </div>
+  </div>
+</details>
+
+<!-- EX 10 -->
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 10</span>
+    <span class="badge badge-2">◆ intermédiaire</span>
+    <span class="exo-titre-txt">Complète la fiche du pain de tradition</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">
+      C'est l'<strong>exercice 6 du manuel</strong>. Complète la colonne « prix total HT » du tableau page 57.
+    </div>
+    <div class="table-wrap">
+      <table class="tableau-donnees">
+        <tr><th>Ingrédient</th><th>Quantité</th><th>Prix unitaire HT</th></tr>
+        <tr><td>Farine de tradition</td><td class="num">1 000 g</td><td>0,73 €/kg</td></tr>
+        <tr><td>Sel</td><td class="num">18 g</td><td>0,80 €/kg</td></tr>
+        <tr><td>Eau</td><td class="num">650 g</td><td>0,13 €/L</td></tr>
+        <tr><td>Levure fraîche</td><td class="num">20 g</td><td>5,90 €/kg</td></tr>
+      </table>
+    </div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Calcule le prix total HT de chaque ingrédient.</p></div>
+    </div>
+    <div class="ordre-grandeur"><strong>Coup de pouce :</strong> convertis d'abord en kg ou en L (tu l'as fait aux exercices 6 et 7).</div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape">
+        <table class="tableau-corr">
+          <tr><th>Ingrédient</th><th>Calcul</th><th>Prix total HT</th></tr>
+          <tr><td>Farine</td><td>1 × 0,73</td><td class="val">0,73 €</td></tr>
+          <tr><td>Sel</td><td>0,018 × 0,80 = 0,0144</td><td class="val">0,01 €</td></tr>
+          <tr><td>Eau</td><td>0,65 × 0,13 = 0,0845</td><td class="val">0,08 €</td></tr>
+          <tr><td>Levure</td><td>0,020 × 5,90 = 0,118</td><td class="val">0,12 €</td></tr>
+        </table>
+        <p class="conclu">Le corrigé du manuel calcule la levure avec 15 g (0,09 €). Avec les 20 g du manuel élève, on trouve 0,12 €.</p>
+      </div>
+    </div>
+  </div>
+</details>
+
+<!-- EX 11 -->
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 11</span>
+    <span class="badge badge-2">◆ intermédiaire</span>
+    <span class="exo-titre-txt">Combien coûte une baguette ?</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">
+      Ce sont les <strong>exercices 7, 8 et 9 du manuel</strong>. Utilise tes résultats de l'exercice 10.
+    </div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Calcule le coût matière de la fiche. Détaille le calcul.</p></div>
+      <div class="question"><span class="q-num">2</span><p>Relève le nombre de baguettes réalisées.</p></div>
+      <div class="question"><span class="q-num">3</span><p>Calcule le coût matière d'une baguette.</p></div>
+    </div>
+    <div class="ordre-grandeur"><strong>Coup de pouce :</strong> le nombre de baguettes est dans la case « rendement ».</div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape"><span class="c-num">1</span> <code>0,73 + 0,01 + 0,08 + 0,12 = 0,94 €</code></div>
+      <div class="corr-etape"><span class="c-num">2</span> <span class="res">5 baguettes de 320 g.</span></div>
+      <div class="corr-etape"><span class="c-num">3</span> <code>0,94 ÷ 5 = 0,188 ≈ 0,19 € par baguette</code>
+        <p class="conclu">Avec 15 g de levure (corrigé du manuel) : 0,91 € et 0,18 € par baguette.</p>
+      </div>
+    </div>
+  </div>
+</details>
+
+<!-- EX 12 -->
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 12</span>
+    <span class="badge badge-exam">★ examen</span>
+    <span class="exo-titre-txt">Chasse aux erreurs dans les calculs de Lucas</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">
+      Lucas a calculé seul. Margot voit un coût matière de <strong>744,60 €</strong> pour 5 baguettes. Impossible !
+    </div>
+    <div class="table-wrap">
+      <table class="tableau-donnees">
+        <tr><th>Ingrédient</th><th>Calcul de Lucas</th></tr>
+        <tr><td>Farine</td><td>1 000 × 0,73 = 730,00 €</td></tr>
+        <tr><td>Sel</td><td>18 × 0,80 = 14,40 €</td></tr>
+        <tr><td>Eau</td><td>0,65 × 0,13 = 0,08 €</td></tr>
+        <tr><td>Levure</td><td>0,020 × 5,90 = 0,12 €</td></tr>
+      </table>
+    </div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Repère les lignes fausses.</p></div>
+      <div class="question"><span class="q-num">2</span><p>Explique l'erreur commune.</p></div>
+      <div class="question"><span class="q-num">3</span><p>Corrige les calculs.</p></div>
+    </div>
+    <div class="ordre-grandeur"><strong>Coup de pouce :</strong> un résultat absurde (730 € de farine) doit toujours t'alerter. Vérifie l'ordre de grandeur.</div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape"><span class="c-num">1</span> <span class="res">La farine et le sel sont faux.</span></div>
+      <div class="corr-etape"><span class="c-num">2</span> Lucas a multiplié des <strong>grammes</strong> par un prix au <strong>kilogramme</strong>.</div>
+      <div class="corr-etape"><span class="c-num">3</span>
+        <code>Farine : 1 × 0,73 = 0,73 € · sel : 0,018 × 0,80 = 0,01 €</code>
+        <p class="conclu">Coût matière juste : 0,94 €.</p>
+      </div>
+    </div>
+  </div>
+</details>
+
+<hr class="section-sep">
+
+<!-- ══════════════════════════════════════════════════════════
+     BLOC 4 – LE COÛT MATIÈRE D'UNE PÂTISSERIE (séance 4)
+══════════════════════════════════════════════════════════ -->
+<div class="bloc-titre" id="cout" style="margin-top:40px">
+  <span class="icone">🍌</span>
+  <h2><small>Séance 4 · 1 h</small>Bloc 4 – Le coût matière du cake à la banane</h2>
+</div>
+
+<div class="memo">
+  <div class="memo-titre">🗂 mémo</div>
+  <code>Une fiche technique peut avoir plusieurs parties (appareil, garniture, décor). On calcule chaque partie, puis on additionne.</code>
+  <code>Coût matière d'une part = coût matière ÷ nombre de parts</code>
+  <code>Pertes à la cuisson ou à la découpe : moins de parts vendues → chaque part vendue coûte plus cher.</code>
+  <p class="note">Source : exercice 10 du manuel (page 59). Erratum : œufs à 0,18 € et farine à 0,95 € (et non « 0018 € » et « 0095 € »).</p>
+</div>
+
+<!-- EX 13 -->
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 13</span>
+    <span class="badge badge-2">◆ intermédiaire</span>
+    <span class="exo-titre-txt">L'appareil à cake</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">
+      C'est l'<strong>exercice 10 du manuel</strong>, première partie. Margot transmet à Lucas la fiche du « cake à la banane ». Les quantités sont déjà en kg.
+    </div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Corrige dans ton manuel les prix des œufs et de la farine (voir le mémo).</p></div>
+      <div class="question"><span class="q-num">2</span><p>Calcule le prix total HT des 7 ingrédients de l'appareil à cake.</p></div>
+      <div class="question"><span class="q-num">3</span><p>Additionne pour trouver le coût de l'appareil.</p></div>
+    </div>
+    <div class="ordre-grandeur"><strong>Coup de pouce :</strong> l'appareil coûte un peu plus de 2 €.</div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape"><span class="c-num">2</span>
+        <table class="tableau-corr">
+          <tr><th>Ingrédient</th><th>Calcul</th><th>Prix total HT</th></tr>
+          <tr><td>Cassonnade</td><td>0,200 × 1,69</td><td class="val">0,34 €</td></tr>
+          <tr><td>Beurre</td><td>0,150 × 5,56</td><td class="val">0,83 €</td></tr>
+          <tr><td>Œufs</td><td>0,100 × 0,18</td><td class="val">0,02 €</td></tr>
+          <tr><td>Farine</td><td>0,240 × 0,95</td><td class="val">0,23 €</td></tr>
+          <tr><td>Poudre à lever</td><td>0,010 × 7,03</td><td class="val">0,07 €</td></tr>
+          <tr><td>Rhum brun</td><td>0,025 × 8,68</td><td class="val">0,22 €</td></tr>
+          <tr><td>Bananes fraîches</td><td>0,285 × 1,34</td><td class="val">0,38 €</td></tr>
+        </table>
+      </div>
+      <div class="corr-etape"><span class="c-num">3</span> <code>0,34 + 0,83 + 0,02 + 0,23 + 0,07 + 0,22 + 0,38 = 2,09 €</code>
+        <p class="conclu">Le beurre est l'ingrédient le plus cher de l'appareil.</p>
+      </div>
+    </div>
+  </div>
+</details>
+
+<!-- EX 14 -->
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 14</span>
+    <span class="badge badge-2">◆ intermédiaire</span>
+    <span class="exo-titre-txt">Le streusel et le coût matière total</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">
+      Suite de l'<strong>exercice 10 du manuel</strong>. Margot ajoute un streusel sur le cake (partie « astuces et dérivés »).
+    </div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Calcule le prix total HT des 4 ingrédients du streusel.</p></div>
+      <div class="question"><span class="q-num">2</span><p>Calcule le coût matière total du cake (appareil + streusel).</p></div>
+    </div>
+    <div class="ordre-grandeur"><strong>Coup de pouce :</strong> chaque ingrédient du streusel pèse 0,040 kg. Reprends 2,09 € de l'exercice 13.</div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape"><span class="c-num">1</span>
+        <table class="tableau-corr">
+          <tr><th>Ingrédient</th><th>Calcul</th><th>Prix total HT</th></tr>
+          <tr><td>Beurre demi-sel</td><td>0,040 × 4,14</td><td class="val">0,17 €</td></tr>
+          <tr><td>Farine</td><td>0,040 × 0,95</td><td class="val">0,04 €</td></tr>
+          <tr><td>Poudre d'amandes</td><td>0,040 × 12,00</td><td class="val">0,48 €</td></tr>
+          <tr><td>Sucre glace</td><td>0,040 × 2,52</td><td class="val">0,10 €</td></tr>
+        </table>
+        <code>Streusel : 0,17 + 0,04 + 0,48 + 0,10 = 0,79 €</code>
+      </div>
+      <div class="corr-etape"><span class="c-num">2</span> <code>2,09 + 0,79 = 2,88 €</code>
+        <p class="conclu">C'est le résultat du corrigé du manuel : coût matière 2,88 €.</p>
+      </div>
+    </div>
+  </div>
+</details>
+
+<!-- EX 15 -->
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 15</span>
+    <span class="badge badge-exam">★ examen</span>
+    <span class="exo-titre-txt">Avec ou sans streusel ?</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">
+      Le cake est prévu pour <strong>8 personnes</strong> (rendement de la fiche). Margot hésite à vendre le cake avec streusel.
+    </div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Calcule le coût matière d'une part sans streusel.</p></div>
+      <div class="question"><span class="q-num">2</span><p>Calcule le coût matière d'une part avec streusel.</p></div>
+      <div class="question"><span class="q-num">3</span><p>Le streusel contient de la poudre d'amandes. Cite l'information à donner au personnel de vente.</p></div>
+    </div>
+    <div class="ordre-grandeur"><strong>Coup de pouce :</strong> sans streusel = 2,09 € · avec streusel = 2,88 €.</div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape"><span class="c-num">1</span> <code>2,09 ÷ 8 = 0,26 € par part</code></div>
+      <div class="corr-etape"><span class="c-num">2</span> <code>2,88 ÷ 8 = 0,36 € par part</code> Le streusel ajoute 0,10 € par part.</div>
+      <div class="corr-etape"><span class="c-num">3</span> <span class="res">Le cake contient des fruits à coque (amandes) : c'est un allergène.</span>
+        <p class="conclu">La fiche technique aide aussi à repérer les allergènes du produit fini.</p>
+      </div>
+    </div>
+  </div>
+</details>
+
+<!-- EX 16 -->
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 16</span>
+    <span class="badge badge-exam">★ examen</span>
+    <span class="exo-titre-txt">Une part ratée à la découpe</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">
+      Lucas découpe le cake avec streusel. Le premier morceau s'effrite : il ne peut pas être vendu. Il reste <strong>7 parts</strong> à vendre.
+    </div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Calcule le coût matière d'une part vendue.</p></div>
+      <div class="question"><span class="q-num">2</span><p>Compare avec le résultat de l'exercice 15.</p></div>
+      <div class="question"><span class="q-num">3</span><p>Propose une solution pour éviter cette perte.</p></div>
+    </div>
+    <div class="ordre-grandeur"><strong>Coup de pouce :</strong> le coût matière du cake ne change pas (2,88 €). Seul le nombre de parts change.</div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape"><span class="c-num">1</span> <code>2,88 ÷ 7 = 0,411 ≈ 0,41 € par part vendue</code></div>
+      <div class="corr-etape"><span class="c-num">2</span> <code>0,41 − 0,36 = 0,05 € de plus par part</code></div>
+      <div class="corr-etape"><span class="c-num">3</span> Exemples : découper le cake bien refroidi, avec un couteau adapté, et suivre la fiche technique.
+        <p class="conclu">Une perte à la découpe augmente le coût de chaque part vendue et réduit la marge.</p>
+      </div>
+    </div>
+  </div>
+</details>
+
+<hr class="section-sep">
+
+<!-- ══════════════════════════════════════════════════════════
+     BLOC 5 – SUJETS TYPE EXAMEN (séance 5)
+══════════════════════════════════════════════════════════ -->
+<div class="bloc-titre" id="examen" style="margin-top:40px">
+  <span class="icone">🎓</span>
+  <h2><small>Séance 5 · 1 h</small>Bloc 5 – Sujets type examen</h2>
+</div>
+
+<div class="memo">
+  <div class="memo-titre">🗂 mémo</div>
+  <code>Méthode : 1. je lis la fiche · 2. je convertis en kg ou en L · 3. quantité × prix unitaire HT · 4. j'additionne · 5. je divise par le nombre de parts · 6. je vérifie l'ordre de grandeur.</code>
+  <p class="note">Ces sujets préparent la partie écrite de l'EP1 (analyser une fiche technique) et de l'EP2 (calculer le coût de la matière d'œuvre, 45 minutes avec le professeur de gestion appliquée).</p>
+</div>
+
+<!-- EX 17 -->
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 17</span>
+    <span class="badge badge-exam">★ examen</span>
+    <span class="exo-titre-txt">Sujet complet : la tarte amandine</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">
+      Pour la fête des pères, Margot lance une <strong>tarte amandine de 8 parts</strong>. Elle confie la fiche technique à Lucas. Tous les prix viennent de la mercuriale de Chez Margot.
+    </div>
+    <div class="table-wrap">
+      <table class="tableau-donnees">
+        <tr><th>Partie</th><th>Ingrédient</th><th>Quantité</th><th>Prix unitaire HT</th></tr>
+        <tr><td>Pâte sablée</td><td>Farine</td><td class="num">200 g</td><td>0,95 €/kg</td></tr>
+        <tr><td></td><td>Beurre</td><td class="num">100 g</td><td>5,56 €/kg</td></tr>
+        <tr><td></td><td>Sucre glace</td><td class="num">80 g</td><td>2,52 €/kg</td></tr>
+        <tr><td></td><td>Œufs entiers (ovoproduit liquide)</td><td class="num">40 g</td><td>3,20 €/kg</td></tr>
+        <tr><td>Crème d'amandes</td><td>Beurre</td><td class="num">80 g</td><td>5,56 €/kg</td></tr>
+        <tr><td></td><td>Sucre glace</td><td class="num">80 g</td><td>2,52 €/kg</td></tr>
+        <tr><td></td><td>Poudre d'amandes</td><td class="num">80 g</td><td>12,00 €/kg</td></tr>
+        <tr><td></td><td>Œufs entiers (ovoproduit liquide)</td><td class="num">80 g</td><td>3,20 €/kg</td></tr>
+        <tr><td>Finition</td><td>Sucre glace</td><td class="num">10 g</td><td>2,52 €/kg</td></tr>
+      </table>
+    </div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Relève le nom de la recette et le rendement.</p></div>
+      <div class="question"><span class="q-num">2</span><p>Convertis toutes les quantités en kg.</p></div>
+      <div class="question"><span class="q-num">3</span><p>Calcule le coût de la pâte sablée.</p></div>
+      <div class="question"><span class="q-num">4</span><p>Calcule le coût de la crème d'amandes et de la finition.</p></div>
+      <div class="question"><span class="q-num">5</span><p>Calcule le coût matière de la tarte, puis d'une part.</p></div>
+      <div class="question"><span class="q-num">6</span><p>Écris ce que Lucas peut noter dans son carnet de recettes pour l'examen.</p></div>
+    </div>
+    <div class="ordre-grandeur"><strong>Coup de pouce :</strong> la tarte coûte environ 3 €. La poudre d'amandes est l'ingrédient le plus cher.</div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape"><span class="c-num">1</span> <span class="res">Tarte amandine · 8 parts.</span></div>
+      <div class="corr-etape"><span class="c-num">2</span> <code>200 g = 0,200 kg · 100 g = 0,100 kg · 80 g = 0,080 kg · 40 g = 0,040 kg · 10 g = 0,010 kg</code></div>
+      <div class="corr-etape"><span class="c-num">3</span>
+        <table class="tableau-corr">
+          <tr><th>Pâte sablée</th><th>Calcul</th><th>Prix total HT</th></tr>
+          <tr><td>Farine</td><td>0,200 × 0,95</td><td class="val">0,19 €</td></tr>
+          <tr><td>Beurre</td><td>0,100 × 5,56</td><td class="val">0,56 €</td></tr>
+          <tr><td>Sucre glace</td><td>0,080 × 2,52</td><td class="val">0,20 €</td></tr>
+          <tr><td>Œufs</td><td>0,040 × 3,20</td><td class="val">0,13 €</td></tr>
+        </table>
+        <code>0,19 + 0,56 + 0,20 + 0,13 = 1,08 €</code>
+      </div>
+      <div class="corr-etape"><span class="c-num">4</span>
+        <table class="tableau-corr">
+          <tr><th>Crème d'amandes</th><th>Calcul</th><th>Prix total HT</th></tr>
+          <tr><td>Beurre</td><td>0,080 × 5,56</td><td class="val">0,44 €</td></tr>
+          <tr><td>Sucre glace</td><td>0,080 × 2,52</td><td class="val">0,20 €</td></tr>
+          <tr><td>Poudre d'amandes</td><td>0,080 × 12,00</td><td class="val">0,96 €</td></tr>
+          <tr><td>Œufs</td><td>0,080 × 3,20</td><td class="val">0,26 €</td></tr>
+        </table>
+        <code>Crème d'amandes : 0,44 + 0,20 + 0,96 + 0,26 = 1,86 € · finition : 0,010 × 2,52 = 0,03 €</code>
+      </div>
+      <div class="corr-etape"><span class="c-num">5</span>
+        <code>Coût matière : 1,08 + 1,86 + 0,03 = 2,97 €</code>
+        <code>Coût d'une part : 2,97 ÷ 8 = 0,371 ≈ 0,37 €</code>
+      </div>
+      <div class="corr-etape"><span class="c-num">6</span> Uniquement les ingrédients et les quantités, sur papier :
+        <code>Pâte sablée : farine 200 g · beurre 100 g · sucre glace 80 g · œufs 40 g. Crème d'amandes : beurre 80 g · sucre glace 80 g · poudre d'amandes 80 g · œufs 80 g.</code>
+        <p class="conclu">Pas de prix, pas d'étapes : le carnet ne garde que « quoi » et « combien ».</p>
+      </div>
+    </div>
+  </div>
+</details>
+
+<!-- EX 18 -->
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 18</span>
+    <span class="badge badge-exam">★ examen</span>
+    <span class="exo-titre-txt">Le prix du beurre augmente</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">
+      Le fournisseur de <strong>Chez Margot</strong> annonce une hausse : le beurre passe de <strong>5,56 €/kg à 6,50 €/kg</strong>. Margot demande à Lucas de mettre à jour la fiche de la tarte amandine (exercice 17).
+    </div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Calcule le nouveau prix total HT du beurre dans la pâte sablée et dans la crème d'amandes.</p></div>
+      <div class="question"><span class="q-num">2</span><p>Calcule la hausse du coût matière de la tarte.</p></div>
+      <div class="question"><span class="q-num">3</span><p>Calcule le nouveau coût d'une part.</p></div>
+      <div class="question"><span class="q-num">4</span><p>Explique pourquoi la fiche technique doit être mise à jour.</p></div>
+    </div>
+    <div class="ordre-grandeur"><strong>Coup de pouce :</strong> avant la hausse, le beurre coûtait 0,56 + 0,44 = 1,00 €.</div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape"><span class="c-num">1</span> <code>Pâte sablée : 0,100 × 6,50 = 0,65 € · crème d'amandes : 0,080 × 6,50 = 0,52 €</code></div>
+      <div class="corr-etape"><span class="c-num">2</span> <code>Beurre : 0,65 + 0,52 = 1,17 € → hausse : 1,17 − 1,00 = 0,17 €</code>
+        <code>Nouveau coût matière : 2,97 + 0,17 = 3,14 €</code>
+      </div>
+      <div class="corr-etape"><span class="c-num">3</span> <code>3,14 ÷ 8 = 0,3925 ≈ 0,39 € par part</code></div>
+      <div class="corr-etape"><span class="c-num">4</span> <span class="res">Les prix des matières premières changent avec les cours du marché.</span>
+        <p class="conclu">Si la fiche n'est pas à jour, le coût matière est faux et le prix de vente risque d'être trop bas.</p>
+      </div>
+    </div>
+  </div>
+</details>
+
+</main>
+
+<footer class="site-footer">
+  CAP pâtissier – Gestion appliquée  |  Chapitre 8 : la fiche technique  |  18 exercices progressifs
+</footer>
+
+<script>
+function toggleCorr(btn) {
+  const corr = btn.nextElementSibling;
+  const isVisible = corr.classList.contains('visible');
+  corr.classList.toggle('visible', !isVisible);
+  btn.textContent = isVisible ? '✅ Voir la correction' : '🔒 Masquer la correction';
+}
+</script>
+</body>
+</html>
